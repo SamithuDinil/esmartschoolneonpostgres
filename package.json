@@ -1,0 +1,52 @@
+{
+  "name": "edusphere",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0 --port 3000",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0 --port 3000",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:unit": "vitest run tests/unit",
+    "test:rules": "firebase emulators:exec --project demo-edusphere --only database,firestore,storage --non-interactive \"pnpm exec vitest run tests/security --maxWorkers=1 --minWorkers=1\"",
+    "seed:demo": "tsx --env-file-if-exists=.env.local scripts/seed-demo.ts",
+    "link:firebase": "node scripts/link-firebase.mjs",
+    "provision:system-owners": "tsx --env-file-if-exists=.env.local scripts/provision-system-owners.ts",
+    "migrate:rtdb-to-neon": "tsx --env-file-if-exists=.env.local scripts/migrate-rtdb-to-neon.ts"
+  },
+  "dependencies": {
+    "firebase": "^11.10.0",
+    "firebase-admin": "^13.5.0",
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.468.0",
+    "next": "^15.5.9",
+    "pg": "^8.23.1",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "recharts": "^2.15.4",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@firebase/rules-unit-testing": "^4.0.1",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^22.18.6",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "^15.5.9",
+    "firebase-tools": "^14.15.2",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.1.13",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

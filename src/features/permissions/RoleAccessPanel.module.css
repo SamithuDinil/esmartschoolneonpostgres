@@ -1,0 +1,807 @@
+.page {
+  max-width: 1500px;
+  padding-top: 25px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 21px 23px;
+  margin-bottom: 18px;
+  border: 1px solid #e5eaf5;
+  border-radius: 18px;
+  background: linear-gradient(115deg, #ffffff 0%, #f7f8ff 62%, #f0f5ff 100%);
+  box-shadow: 0 8px 26px rgba(34, 55, 100, 0.04);
+}
+
+.heroIcon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  color: #475ccc;
+  background: #e9edff;
+  border: 1px solid #dce3ff;
+  border-radius: 14px;
+}
+
+.heroCopy {
+  min-width: 0;
+  flex: 1;
+}
+
+.eyebrow,
+.roleKicker {
+  color: #71809a;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 2px 0 4px;
+  color: #18243b;
+  font-size: clamp(21px, 2vw, 26px);
+  font-weight: 760;
+  letter-spacing: -0.04em;
+}
+
+.hero p {
+  margin: 0;
+  color: #697790;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.protectedNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 250px;
+  padding: 9px 12px;
+  border: 1px solid #e4e9f3;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #68758d;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.protectedNote svg {
+  flex: 0 0 auto;
+  color: #6678c8;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(228px, 275px) minmax(0, 1fr);
+  align-items: start;
+  gap: 17px;
+}
+
+.rolePanel,
+.permissionPanel {
+  overflow: hidden;
+  border: 1px solid #e5eaf2;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 6px 22px rgba(30, 48, 88, 0.035);
+}
+
+.rolePanel {
+  position: sticky;
+  top: 91px;
+}
+
+.rolePanelHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 16px 12px;
+}
+
+.rolePanelHeading > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.rolePanelHeading h2 {
+  margin: 0;
+  color: #23314b;
+  font-size: 13px;
+  font-weight: 740;
+  letter-spacing: -0.01em;
+}
+
+.rolePanelHeading span {
+  padding: 3px 7px;
+  border-radius: 99px;
+  background: #f1f3f8;
+  color: #758198;
+  font-size: 9px;
+  font-weight: 650;
+}
+
+.search {
+  min-width: 0;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 13px 11px;
+  padding: 0 11px;
+  border: 1px solid #e7ebf2;
+  border-radius: 10px;
+  background: #fafbfc;
+  color: #909bb0;
+}
+
+.search:focus-within {
+  border-color: #aab7ec;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(76, 97, 200, 0.08);
+}
+
+.search input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #283650;
+  font: inherit;
+  font-size: 11px;
+}
+
+.search input::placeholder {
+  color: #9aa4b6;
+}
+
+.roleList {
+  max-height: min(67vh, 710px);
+  overflow: auto;
+  padding: 0 9px 11px;
+  scrollbar-color: #dbe1ed transparent;
+  scrollbar-width: thin;
+}
+
+.roleChoice {
+  width: 100%;
+  min-height: 61px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 9px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.roleChoice:hover {
+  background: #f7f8fc;
+}
+
+.roleChoice:focus-visible,
+.categoryToggle:focus-visible,
+.defaultsButton:focus-visible,
+.saveButton:focus-visible,
+.categoryActions button:focus-visible {
+  outline: 3px solid rgba(79, 98, 200, 0.23);
+  outline-offset: 2px;
+}
+
+.roleChoiceSelected,
+.roleChoiceSelected:hover {
+  border-color: #dce3fb;
+  background: #f2f4ff;
+}
+
+.roleGlyph {
+  width: 33px;
+  height: 33px;
+  flex: 0 0 33px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e7eaf2;
+  border-radius: 10px;
+  background: #fff;
+  color: #65738e;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.roleChoiceSelected .roleGlyph {
+  border-color: #d9e0ff;
+  background: #e7ebff;
+  color: #4056be;
+}
+
+.roleText {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  gap: 3px;
+}
+
+.roleText strong {
+  overflow: hidden;
+  color: #34415a;
+  font-size: 11px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.roleChoiceSelected .roleText strong {
+  color: #3348a7;
+}
+
+.roleText small {
+  overflow: hidden;
+  color: #8a95a8;
+  font-size: 9px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.roleCount {
+  min-width: 23px;
+  height: 22px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 7px;
+  background: #f2f4f8;
+  color: #758197;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.roleChoiceSelected .roleCount {
+  background: #e2e7ff;
+  color: #4358b7;
+}
+
+.noRoles {
+  margin: 8px 7px 12px;
+  color: #8590a2;
+  font-size: 11px;
+}
+
+.permissionPanel {
+  min-width: 0;
+  padding: 20px 21px 0;
+}
+
+.permissionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 15px;
+}
+
+.permissionHeader h2 {
+  margin: 3px 0 4px;
+  color: #1d2a42;
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+.permissionHeader p {
+  margin: 0;
+  color: #7b8799;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.defaultsButton {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  padding: 0 11px;
+  border: 1px solid #e6eaf1;
+  border-radius: 9px;
+  background: #fff;
+  color: #65728a;
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.defaultsButton:hover:not(:disabled) {
+  border-color: #d5dbeb;
+  background: #f8f9fc;
+}
+
+.defaultsButton:disabled {
+  cursor: default;
+  opacity: 0.48;
+}
+
+.summary {
+  margin-bottom: 13px;
+  padding: 12px 14px 10px;
+  border: 1px solid #e9edf5;
+  border-radius: 12px;
+  background: #fafbfe;
+}
+
+.summaryTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.summaryTop strong {
+  color: #3c4a65;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.summaryTop strong span {
+  color: #8791a2;
+  font-size: 10px;
+  font-weight: 550;
+}
+
+.summaryPercent {
+  color: #6475c6;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.progressTrack {
+  height: 5px;
+  overflow: hidden;
+  margin: 8px 0 7px;
+  border-radius: 99px;
+  background: #e8ebf3;
+}
+
+.progressTrack span {
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #5d70ce, #8290dc);
+  transition: width 180ms ease;
+}
+
+.summary p {
+  margin: 0;
+  color: #8993a4;
+  font-size: 9px;
+}
+
+.featureSearch {
+  margin: 0 0 12px;
+  height: 40px;
+}
+
+.clearSearch {
+  flex: 0 0 auto;
+  padding: 3px 5px;
+  border: 0;
+  background: transparent;
+  color: #5264bc;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.categoryList {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 16px;
+}
+
+.category {
+  overflow: hidden;
+  border: 1px solid #e8ecf3;
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 130ms ease, box-shadow 130ms ease;
+}
+
+.categoryExpanded {
+  border-color: #dce2f0;
+  box-shadow: 0 3px 12px rgba(31, 50, 91, 0.035);
+}
+
+.categoryToggle {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 13px;
+  border: 0;
+  background: #fff;
+  color: #34415a;
+  text-align: left;
+}
+
+.categoryToggle:hover {
+  background: #fafbfe;
+}
+
+.categoryName,
+.categoryMeta {
+  display: inline-flex;
+  align-items: center;
+}
+
+.categoryName {
+  min-width: 0;
+  gap: 9px;
+}
+
+.categoryName strong {
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.categoryCheck {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d9dfea;
+  border-radius: 6px;
+  background: #fff;
+  color: #fff;
+}
+
+.categoryCheckOn {
+  border-color: #6678cc;
+  background: #6678cc;
+}
+
+.categoryMeta {
+  flex: 0 0 auto;
+  gap: 7px;
+  color: #8993a5;
+  font-size: 9px;
+  font-weight: 650;
+}
+
+.categoryMeta svg {
+  transition: transform 140ms ease;
+}
+
+.categoryExpanded .categoryMeta svg {
+  transform: rotate(180deg);
+}
+
+.featureList {
+  padding: 0 12px 10px;
+  border-top: 1px solid #eff1f5;
+  background: #fff;
+}
+
+.categoryActions {
+  min-height: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: #8b95a5;
+  font-size: 9px;
+}
+
+.categoryActions button {
+  padding: 4px 0 4px 6px;
+  border: 0;
+  background: transparent;
+  color: #5266bf;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.featureRow {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 7px;
+  border-top: 1px solid #f1f3f7;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.featureRow:hover {
+  background: #f8f9fd;
+}
+
+.checkboxWrap {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #cfd6e3;
+  border-radius: 5px;
+  background: #fff;
+  color: #fff;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.checkboxWrap input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkboxWrap:focus-within {
+  outline: 3px solid rgba(79, 98, 200, 0.19);
+  outline-offset: 2px;
+}
+
+.checkboxChecked {
+  border-color: #5c70c8;
+  background: #5c70c8;
+}
+
+.featureText {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.featureText strong {
+  color: #39465f;
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.featureText small {
+  overflow-wrap: anywhere;
+  color: #a0a8b6;
+  font-size: 8px;
+  letter-spacing: 0.005em;
+  line-height: 1.3;
+}
+
+.emptySearch {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 34px 15px;
+  border: 1px dashed #dfe4ee;
+  border-radius: 12px;
+  color: #8994a6;
+  font-size: 10px;
+}
+
+.emptySearch svg {
+  margin-bottom: 3px;
+  color: #8c98b1;
+}
+
+.emptySearch strong {
+  color: #53617a;
+  font-size: 11px;
+}
+
+.saveBar {
+  position: sticky;
+  z-index: 2;
+  bottom: 0;
+  min-height: 61px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 -21px;
+  padding: 10px 21px;
+  border-top: 1px solid #e9edf3;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+}
+
+.saveStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #808b9c;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.savedIcon,
+.unsavedDot {
+  width: 17px;
+  height: 17px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.savedIcon {
+  background: #e9f6ee;
+  color: #318556;
+}
+
+.unsavedDot {
+  width: 7px;
+  height: 7px;
+  background: #df9a3c;
+}
+
+.saveButton {
+  min-height: 36px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 9px;
+  background: #5268c6;
+  box-shadow: 0 5px 12px rgba(68, 88, 177, 0.17);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  transition: background 120ms ease, transform 120ms ease, opacity 120ms ease;
+}
+
+.saveButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #4358b5;
+}
+
+.saveButton:disabled {
+  cursor: default;
+  opacity: 0.45;
+  box-shadow: none;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: minmax(195px, 235px) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .permissionPanel {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .saveBar {
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 740px) {
+  .page {
+    padding: 17px 14px 30px;
+  }
+
+  .hero {
+    align-items: flex-start;
+    gap: 11px;
+    padding: 16px;
+  }
+
+  .heroIcon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+    border-radius: 12px;
+  }
+
+  .protectedNote {
+    display: none;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rolePanel {
+    position: static;
+  }
+
+  .roleList {
+    max-height: 220px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px;
+  }
+
+  .roleChoice {
+    min-height: 55px;
+    gap: 7px;
+    padding: 6px;
+  }
+
+  .roleGlyph {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+
+  .roleText small {
+    display: none;
+  }
+
+  .roleCount {
+    min-width: 19px;
+    height: 19px;
+  }
+
+  .permissionPanel {
+    padding: 17px 14px 0;
+  }
+
+  .permissionHeader {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .permissionHeader h2 {
+    font-size: 17px;
+  }
+
+  .defaultsButton {
+    min-height: 32px;
+    padding: 0 8px;
+    font-size: 9px;
+  }
+
+  .summary {
+    padding-right: 11px;
+    padding-left: 11px;
+  }
+
+  .saveBar {
+    margin-right: -14px;
+    margin-left: -14px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roleChoice,
+  .progressTrack span,
+  .category,
+  .categoryMeta svg,
+  .checkboxWrap,
+  .saveButton {
+    transition: none;
+  }
+}

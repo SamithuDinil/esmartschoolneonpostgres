@@ -1,0 +1,16 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Direct Storage access is intentionally disabled until the server creates an
+    // authorization record bound to an existing school record and verifies ownership.
+    match /schools/{schoolId}/students/{studentId}/{fileName} {
+      allow read, write: if false;
+    }
+    match /schools/{schoolId}/staff/{staffId}/{fileName} {
+      allow read, write: if false;
+    }
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

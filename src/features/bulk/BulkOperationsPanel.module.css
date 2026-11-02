@@ -1,0 +1,206 @@
+.printRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  overflow: auto;
+  padding: 22px;
+  background: #edf1f5;
+  color: #14231f;
+}
+.printToolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 18px;
+  padding: 12px 16px;
+  max-width: 960px;
+  border: 1px solid #dce4df;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(20, 45, 40, 0.08);
+}
+.printToolbar > div {
+  display: grid;
+  gap: 3px;
+  margin-right: auto;
+}
+.printToolbar span {
+  color: #65756f;
+  font-size: 12px;
+}
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 3.37in), 3.37in));
+  justify-content: center;
+  align-content: start;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.idCard {
+  box-sizing: border-box;
+  width: 3.37in;
+  height: 2.125in;
+  padding: 0.14in;
+  overflow: hidden;
+  border: 1px solid #d7d9d1;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #fff 0%, #fff 70%, #f8f7f1 100%);
+  box-shadow: 0 5px 18px rgba(28, 43, 38, 0.11);
+  color: #101b18;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 43px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid #d9bb60;
+}
+.cardHeader > div:last-child {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.cardHeader strong {
+  overflow: hidden;
+  color: #15231f;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cardHeader small {
+  overflow: hidden;
+  color: #68756f;
+  font-size: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.schoolLogo,
+.logoPlaceholder {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+.logoPlaceholder {
+  display: grid;
+  place-items: center;
+  border: 1px solid #e2d393;
+  border-radius: 50%;
+  background: #f8f4e6;
+  color: #80691d;
+  font-size: 18px;
+  font-weight: 800;
+}
+.cardBody {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  height: calc(100% - 51px);
+  padding-top: 7px;
+}
+.qrWrap {
+  display: grid;
+  place-items: center;
+}
+.qrWrap svg {
+  display: block;
+  width: 78px;
+  height: 78px;
+}
+.studentDetails {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 8px;
+  margin: 0;
+  min-width: 0;
+}
+.studentDetails > div:first-child,
+.studentDetails > div:nth-child(3) {
+  grid-column: 1 / -1;
+}
+.studentDetails dt {
+  color: #737d78;
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.studentDetails dd {
+  display: -webkit-box;
+  margin: 2px 0 0;
+  overflow: hidden;
+  color: #18221f;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+@media (max-width: 600px) {
+  .printRoot {
+    padding: 10px;
+  }
+  .printToolbar {
+    flex-wrap: wrap;
+  }
+  .printToolbar > div {
+    flex-basis: 100%;
+  }
+  .idCard {
+    max-width: 100%;
+  }
+}
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+  :global(body) :not(.printRoot) {
+    visibility: hidden !important;
+  }
+  :global(body) .printRoot,
+  :global(body) .printRoot * {
+    visibility: visible !important;
+  }
+  .printRoot {
+    position: absolute;
+    inset: 0;
+    z-index: 99999;
+    display: block !important;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 0;
+    background: #fff;
+  }
+  .printToolbar {
+    display: none !important;
+  }
+  .cardGrid {
+    grid-template-columns: repeat(2, 3.37in);
+    justify-content: center;
+    gap: 5mm 4mm;
+    max-width: none;
+    margin: 0;
+  }
+  .idCard {
+    width: 3.37in;
+    height: 2.125in;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

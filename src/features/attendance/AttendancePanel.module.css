@@ -1,0 +1,120 @@
+.statusActions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(54px, 1fr));
+  gap: 5px;
+  min-width: 250px;
+}
+
+.statusButton {
+  min-height: 36px;
+  padding: 6px 5px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: #f7f9fc;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.15;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+.statusButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 7px rgb(25 45 70 / 12%);
+}
+
+.statusButton:focus-visible {
+  outline: 3px solid #155eef;
+  outline-offset: 2px;
+}
+
+.statusButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.lockedStatus {
+  display: inline-flex;
+  min-width: 150px;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 10px;
+  border: 1px solid #dce3ef;
+  border-radius: 9px;
+  background: #f6f8fc;
+  color: #465572;
+  font-size: 12px;
+}
+
+.lockedStatus small {
+  color: #8491a7;
+  font-size: 10px;
+}
+
+.present {
+  color: #176b43;
+  border-color: #c7e8d4;
+  background: #f0faf4;
+}
+
+.present.selected {
+  color: #fff;
+  border-color: #198754;
+  background: #198754;
+}
+
+.absent {
+  color: #a12a32;
+  border-color: #f1c8cc;
+  background: #fff5f5;
+}
+
+.absent.selected {
+  color: #fff;
+  border-color: #c43d46;
+  background: #c43d46;
+}
+
+.late {
+  color: #8a5900;
+  border-color: #f2dfb4;
+  background: #fff9e9;
+}
+
+.late.selected {
+  color: #fff;
+  border-color: #b87600;
+  background: #b87600;
+}
+
+.excused {
+  color: #4e52a0;
+  border-color: #d9daf3;
+  background: #f6f6ff;
+}
+
+.excused.selected {
+  color: #fff;
+  border-color: #6266b6;
+  background: #6266b6;
+}
+
+.attendanceHint {
+  margin: 8px 2px 0;
+  color: #596579;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .statusActions {
+    grid-template-columns: repeat(2, minmax(72px, 1fr));
+    min-width: 150px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusButton {
+    transition: none;
+  }
+}

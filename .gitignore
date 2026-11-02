@@ -1,0 +1,22 @@
+node_modules/
+.next/
+.turbo/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.firebase/
+firestore-debug.log
+ui-debug.log
+firebase-debug.log
+service-account*.json
+*service-account*.json
+*firebase-adminsdk*.json
+*-adminsdk-*.json
+.vercel/
+.DS_Store
+Thumbs.db
+
+# Ignore both the dependency directory and an accidental symlink to it
+node_modules

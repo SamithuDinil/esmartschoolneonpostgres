@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function member(schoolId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/schools/$(schoolId)/memberships/$(request.auth.uid))
+        && get(/databases/$(database)/documents/schools/$(schoolId)/memberships/$(request.auth.uid)).data.status == 'active';
+    }
+    function hasPermission(schoolId, permission) {
+      return member(schoolId)
+        && get(/databases/$(database)/documents/schools/$(schoolId)/memberships/$(request.auth.uid)).data.permissions.hasAny([permission]);
+    }
+    match /users/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['displayName', 'photoPath', 'locale', 'updatedAt']);
+      allow update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['displayName', 'photoPath', 'locale', 'updatedAt']);
+      allow delete: if false;
+    }
+    match /schools/{schoolId} {
+      allow get: if member(schoolId);
+      allow list, create, update, delete: if false;
+      match /memberships/{uid} {
+        allow get: if signedIn() && (request.auth.uid == uid || hasPermission(schoolId, 'memberships.read'));
+        allow list: if hasPermission(schoolId, 'memberships.read');
+        allow write: if false;
+      }
+      match /students/{studentId} {
+        allow read: if hasPermission(schoolId, 'students.read');
+        allow write: if false;
+      }
+      match /guardians/{guardianId} {
+        allow read: if hasPermission(schoolId, 'guardians.read');
+        allow write: if false;
+      }
+      match /studentGuardianLinks/{linkId} {
+        allow read: if hasPermission(schoolId, 'guardians.read')
+          || (signedIn() && resource.data.guardianUid == request.auth.uid);
+        allow write: if false;
+      }
+      match /welfareRecords/{recordId} {
+        allow read: if hasPermission(schoolId, 'welfare.read');
+        allow write: if false;
+      }
+      match /{document=**} {
+        allow read, write: if false;
+      }
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
